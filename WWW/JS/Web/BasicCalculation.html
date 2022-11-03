@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculations</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .grid-container div {
+            padding: 10px 30px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        .form-1 h3 {
+            text-align: center;
+        }
+
+        .form-1 label {
+            margin-left: 10px;
+        }
+
+        .form-1 input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 20px;
+        }
+
+        .form-1 button {
+            padding: 5px;
+            border-radius: 20px;
+            width: 100px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div>
+            <form action="" class="form-1">
+                <h3>Addition</h3>
+                <label for="augend">Augend</label>
+                <input type="text" name="augend" id="augend">
+                <label for="addend">Addend</label>
+                <input type="text" name="addend" id="addend">
+                <label for="sum">Sum</label>
+                <input type="text" name="sum" id="sum" readonly>
+                <button type="button" onclick="add()">Add</button>
+            </form>
+        </div>
+        <div>
+            <form action="" class="form-1">
+                <h3>Subtraction</h3>
+                <label for="minuend">Minuend</label>
+                <input type="text" name="minuend" id="minuend">
+                <label for="subtrahend">Subtrahend</label>
+                <input type="text" name="subtrahend" id="subtrahend">
+                <label for="difference">Difference</label>
+                <input type="text" name="difference" id="difference" readonly>
+                <button type="button" onclick="subtract()">Subtract</button>
+            </form>
+        </div>
+        <div>
+            <form action="" class="form-1">
+                <h3>Factorial</h3>
+                <label for="number">Number</label>
+                <input type="text" name="number" id="number">
+                <label for="factorial">Factorial</label>
+                <input type="text" name="factorial" id="factorial" readonly>
+                <button type="button" onclick="fact()">Find</button>
+            </form>
+        </div>
+        <div>
+            <form action="" class="form-1">
+                <h3>Armstrong Number</h3>
+                <label for="arm_number">Number</label>
+                <input type="text" name="arm_number" id="arm_number">
+                <label for="arm_result">Result</label>
+                <input type="text" name="arm_result" id="arm_result" readonly>
+                <button type="button" onclick="armstrong()">Find</button>
+            </form>
+        </div>
+        <div>
+            <form action="" class="form-1">
+                <h3>Currency Converter</h3>
+                <label for="usd">USD</label>
+                <input type="text" name="usd" id="usd" onkeyup ="usdToInr()">
+                <label for="inr">INR</label>
+                <input type="text" name="inr" id="inr" onkeyup ="inrToUsd()">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function add() {
+            let augend = Number(document.getElementById("augend").value);
+            let addend = Number(document.getElementById("addend").value);
+            let sum = augend + addend;
+            document.getElementById("sum").value = sum;
+        }
+
+        function subtract() {
+            let minuend = document.getElementById("minuend").value;
+            let subtrahend = document.getElementById("subtrahend").value;
+            let difference = minuend - subtrahend;
+            document.getElementById("difference").value = difference;
+        }
+
+        function fact() {
+            let n = document.getElementById("number").value;
+            let f = 1;
+            for (i = n; i >= 1; i--) {
+                f = f * i;
+            }
+            document.getElementById("factorial").value = f;
+        }
+
+        function armstrong() {
+            let n = document.getElementById("arm_number").value;
+            let l = n.length;
+            let c = n;
+            let sum = 0;
+            while (c > 0) {
+                let d = c % 10;
+                sum = sum + Math.pow(d, l);
+                c = Math.floor(c / 10);
+            }
+            if (n == sum)
+                document.getElementById("arm_result").value = "Armstrong Number";
+            else
+                document.getElementById("arm_result").value = "Not an Armstrong Number";
+        }
+
+        function usdToInr() {
+            let factor = 79.48;
+            let usd = document.getElementById("usd").value;
+            let inr = Math.round(usd * 79.48 * 100) / 100;
+            document.getElementById("inr").value = inr;
+        }
+
+        function inrToUsd() {
+            let factor = 79.48;
+            let inr = document.getElementById("inr").value;
+            let usd = Math.round ((inr / factor) * 100) / 100;
+            document.getElementById("usd").value = usd; 
+        }
+
+    </script>
+</body>
+
+</html>

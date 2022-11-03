@@ -1,0 +1,44 @@
+.login-form-container {
+    margin: 0 auto;
+    margin-top: 200px;
+    padding: 30px;
+    background-color: lightgrey;
+    width: 50%;
+    border: 1px solid darkgrey;
+}
+
+header {
+    min-height: 100px;
+}
+
+nav {
+    background-color: blueviolet;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav a:hover {
+    background-color: brown;
+}
+
+main {
+    min-height: 300px;
+}
+
+.form-type1 {
+    padding: 5px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+footer {
+    min-height: 200px;
+    background-color: black;
+    color: white;
+}
